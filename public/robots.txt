@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://maaaMari015.shop
+
+# Sitemaps
+Sitemap: https://maaaMari015.shop/sitemap.xml
