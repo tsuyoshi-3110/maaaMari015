@@ -23,7 +23,7 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
 });
 
-// ✅ Blog向けにメタ情報を更新（themeColorは viewport にて指定）
+// ✅ ドメイン確定版（themeColorは viewport 側）
 export const metadata: Metadata = {
   title: "MARIE店｜食べ歩きブログ（斎野真利江）",
   description:
@@ -45,20 +45,21 @@ export const metadata: Metadata = {
     "写真",
   ],
   authors: [{ name: "斎野 真利江" }],
-  // metadataBase は未確定ドメインのため省略
+  // ★ ドメインを設定（相対URLが自動で絶対化されます）
+  metadataBase: new URL("https://maaa-mari015.shop"),
   alternates: {
-    canonical: "/",
+    canonical: "https://maaa-mari015.shop/",
   },
   openGraph: {
     title: "MARIE店｜食べ歩きブログ（斎野真利江）",
     description:
       "いろんな飲食店を巡ってブログ・動画・写真で“勝手に宣伝”。等身大のレビューでお店の魅力を発信します。",
-    url: "/",
+    url: "https://maaa-mari015.shop/",
     siteName: "MARIE店",
     type: "website",
     images: [
       {
-        url: "/ogpLogo.png",
+        url: "/ogpLogo.png", // metadataBase により絶対URL化
         width: 1200,
         height: 630,
         alt: "MARIE店 OGP",
@@ -70,7 +71,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "MARIE店｜食べ歩きブログ（斎野真利江）",
     description: "食べ歩き・動画・写真で“勝手に宣伝”する個人グルメブログ。",
-    images: ["/ogpLogo.png"],
+    images: ["/ogpLogo.png"], // ここもmetadataBaseで絶対URL化
   },
   icons: {
     icon: [
@@ -104,7 +105,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         {/* OGP画像の事前読み込み（ファイル名は固定で /ogpLogo.png） */}
         <link rel="preload" as="image" href="/ogpLogo.png" type="image/png" />
-        {/* 検索コンソール所有権確認が必要な場合は以下を使用
+        {/* 検索コンソール所有権確認が必要なら下記を有効化
         <meta name="google-site-verification" content="（コード）" />
         */}
       </head>
@@ -116,7 +117,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         {children}
 
-        {/* 構造化データ：WebSite / Blog / Person を @graph でまとめる */}
+        {/* 構造化データ：WebSite / Blog / Person（★絶対URLに更新） */}
         <Script id="ld-json" type="application/ld+json" strategy="afterInteractive">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -124,20 +125,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               {
                 "@type": "WebSite",
                 "name": "MARIE店",
-                "url": "/",
+                "url": "https://maaa-mari015.shop/",
                 "inLanguage": "ja",
                 "publisher": { "@id": "#owner" },
-                "image": "/ogpLogo.png",
+                "image": "https://maaa-mari015.shop/ogpLogo.png",
                 "description":
                   "福井を拠点に、いろんな飲食店を巡って“勝手に宣伝”する個人ブログ。食レポ記事・動画・写真でお店の魅力を発信。",
               },
               {
                 "@type": "Blog",
                 "name": "MARIE店",
-                "url": "/",
+                "url": "https://maaa-mari015.shop/",
                 "inLanguage": "ja",
                 "publisher": { "@id": "#owner" },
-                "image": "/ogpLogo.png",
+                "image": "https://maaa-mari015.shop/ogpLogo.png",
                 "about": ["グルメ", "食べ歩き", "飲食店レビュー", "写真", "動画"],
               },
               {

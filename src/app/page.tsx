@@ -12,11 +12,11 @@ export const metadata: Metadata = {
     title: "MARIE店｜食べ歩きブログ・動画＆写真レビュー",
     description:
       "気になったお店を実際に訪れて、記事・動画・画像で分かりやすく紹介する個人グルメブログ。",
-    url: "/",
+    url: "https://maaa-mari015.shop/",
     siteName: "MARIE店",
     images: [
       {
-        url: "/ogpLogo.png", 
+        url: "/ogpLogo.png", // layoutのmetadataBaseで絶対URL化されます
         width: 1200,
         height: 630,
       },
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     locale: "ja_JP",
     type: "website",
   },
-  alternates: { canonical: "/" },
+  alternates: { canonical: "https://maaa-mari015.shop/" },
 };
 
 export default function HomePage() {
@@ -53,7 +53,7 @@ export default function HomePage() {
         </p>
       </section>
 
-      {/* ③ JSON-LD（構造化データ）：WebSite / Blog / Person */}
+      {/* ③ JSON-LD（構造化データ）：WebSite / Blog / Person ※絶対URLに更新 */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -63,9 +63,9 @@ export default function HomePage() {
               {
                 "@type": "WebSite",
                 name: "MARIE店",
-                url: "/",
+                url: "https://maaa-mari015.shop/",
                 inLanguage: "ja",
-                image: "/ogpLogo.png",
+                image: "https://maaa-mari015.shop/ogpLogo.png",
                 publisher: { "@id": "#marie-person" },
                 description:
                   "福井発の食べ歩きブロガー『斎野真利江（MARIE）』が、ブログ・動画・写真でお店を紹介する個人サイト。",
@@ -73,10 +73,10 @@ export default function HomePage() {
               {
                 "@type": "Blog",
                 name: "MARIE店",
-                url: "/",
+                url: "https://maaa-mari015.shop/",
                 inLanguage: "ja",
                 publisher: { "@id": "#marie-person" },
-                image: "/ogpLogo.png",
+                image: "https://maaa-mari015.shop/ogpLogo.png",
                 about: ["グルメ", "食べ歩き", "飲食店レビュー", "動画", "写真"],
               },
               {
